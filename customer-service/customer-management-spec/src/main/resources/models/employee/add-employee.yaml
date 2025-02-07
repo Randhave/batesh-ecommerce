@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: Employee model
+  version: 1.0.0
+components:
+  schemas:
+    EmployeeDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          readOnly: true
+        empId:
+          type: string
+          example: "EMP-001"
+          description: Unique employee ID
+        name:
+          type: string
+          example: "John Doe"
+        email:
+          type: string
+          format: email
+          example: "john.doe@example.com"
+        companyOrganization:
+          type: string
+          example: "Tech Corp"
+        department:
+          type: string
+          example: "Engineering"
+      required:
+        - empId
+        - name
+        - email
+        - companyOrganization
+        - department

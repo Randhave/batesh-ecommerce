@@ -1,0 +1,111 @@
+openapi: 3.0.3
+info:
+  title: Employee API
+  version: 1.0.0
+
+tags:
+  - name: Employee
+
+paths:
+  /employees:
+    post:
+      operationId: createNewEmployee
+      summary: Create a new employee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeDTO'
+      responses:
+        '200':
+          description: Employee created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeDTO'
+      tags:
+        - Employee
+
+    get:
+      operationId: getAllEmployees
+      summary: Get all employees
+      responses:
+        '200':
+          description: List of all employees
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmployeeDTO'
+      tags:
+        - Employee
+
+  /employees/{id}:
+    get:
+      operationId: getEmployeeById
+      summary: Get employee by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Employee found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeDTO'
+      tags:
+        - Employee
+
+    put:
+      operationId: updateEmployee
+      summary: Update an employee by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeDTO'
+      responses:
+        '200':
+          description: Employee updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeDTO'
+      tags:
+        - Employee
+
+    delete:
+      operationId: deleteEmployeeById
+      summary: Delete an employee by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Employee deleted successfully
+      tags:
+        - Employee
+
+components:
+  schemas:
+    EmployeeDTO:
+      $ref: "../models/employee/add-employee.yaml#/components/schemas/EmployeeDTO"

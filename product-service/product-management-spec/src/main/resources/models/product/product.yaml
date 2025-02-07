@@ -1,0 +1,105 @@
+openapi: 3.0.3
+info:
+  title: Product model
+  version: 1.0.0
+components:
+  schemas:
+    ProductModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          readOnly: true
+        productId:
+          type: string
+          example: "PROD-001"
+          description: Unique product ID
+        name:
+          type: string
+          example: "Apple iPhone 13"
+        description:
+          type: string
+          example: "A high-end smartphone with advanced features"
+        price:
+          type: number
+          format: float
+          example: 999.99
+        discount:
+          type: number
+          format: float
+          example: 10.0
+        category:
+          type: string
+          example: "Electronics"
+        subCategory:
+          type: string
+          example: "Smartphones"
+        brand:
+          type: string
+          example: "Apple"
+        model:
+          type: string
+          example: "iPhone 13"
+        color:
+          type: string
+          example: "Space Gray"
+        size:
+          type: string
+          example: "6.1 inches"
+        weight:
+          type: number
+          format: float
+          example: 0.5
+        dimensions:
+          type: string
+          example: "6.1 x 3.1 x 0.3 inches"
+        material:
+          type: string
+          example: "Aluminum"
+        warranty:
+          type: string
+          example: "1 year"
+        returnPolicy:
+          type: string
+          example: "30 days"
+        shipping:
+          type: string
+          example: "Free shipping"
+        images:
+          type: array
+          items:
+            type: string
+            example: "https://example.com/product-image.jpg"
+        reviews:
+          type: array
+          items:
+            $ref: '../review.yaml#/components/schemas/ReviewModel'
+        specifications:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                example: "Processor"
+              value:
+                type: string
+                example: "A15 Bionic chip"
+      required:
+        - productId
+        - name
+        - description
+        - price
+        - category
+        - subCategory
+        - brand
+        - model
+        - color
+        - size
+        - weight
+        - dimensions
+        - material
+        - warranty
+        - returnPolicy
+        - shipping

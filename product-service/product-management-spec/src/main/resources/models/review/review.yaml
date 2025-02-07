@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Review Model
+  version: 1.0.0
+
+components:
+  schemas:
+    ReviewModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          readOnly: true
+        rating:
+          type: integer
+          format: int32
+          example: 5
+        review:
+          type: string
+          example: "This product is amazing!"
+        reviewer:
+          type: string
+          example: "John Doe"
+        productId:
+          type: integer
+          format: int64
+          example: 1
+      required:
+        - rating
+        - review
+        - reviewer
+        - productId

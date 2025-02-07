@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/batesh-ecommerce.iml" filepath="$PROJECT_DIR$/.idea/batesh-ecommerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-service/order-management-spec/order-management-spec.iml" filepath="$PROJECT_DIR$/order-service/order-management-spec/order-management-spec.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-service/product-management-spec/product-management-spec.iml" filepath="$PROJECT_DIR$/product-service/product-management-spec/product-management-spec.iml" />
+    </modules>
+  </component>
+</project>

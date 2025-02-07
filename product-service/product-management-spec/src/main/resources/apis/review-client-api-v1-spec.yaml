@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: Review API
+  version: 1.0.0
+
+tags:
+  - name: Reviews
+
+paths:
+  /products/{productId}/reviews:
+    post:
+      operationId: createNewReview
+      summary: Create a new Review for a Product
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewModel'
+      responses:
+        '200':
+          description: Review created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewModel'
+      tags:
+        - Reviews
+
+    get:
+      operationId: getAllReviewsForProduct
+      summary: Get all Reviews for a Product
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: List of all Reviews for the Product
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewModel'
+      tags:
+        - Reviews
+
+  /reviews/{id}:
+    get:
+      operationId: getReviewById
+      summary: Get Review by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Review found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewModel'
+      tags:
+        - Reviews
+
+    put:
+      operationId: updateReview
+      summary: Update a Review by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewModel'
+      responses:
+        '200':
+          description: Review updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewModel'
+      tags:
+        - Reviews
+
+    delete:
+      operationId: deleteReviewById
+      summary: Delete a Review by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Review deleted successfully
+      tags:
+        - Reviews
+
+components:
+  schemas:
+    ReviewModel:
+      $ref: "../models/review/review.yaml#/components/schemas/ReviewModel"
