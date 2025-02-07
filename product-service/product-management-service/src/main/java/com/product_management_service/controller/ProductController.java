@@ -1,6 +1,7 @@
 package com.product_management_service.controller;
 
-import com.example.Product.model.ProductDTO;
+import com.product.apis.ProductsApi;
+import com.product.models.ProductModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,9 +10,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/client-api/v1/")
-public class ProductController  implements com.example.Product.api.ProductApi {
+public class ProductController implements ProductsApi {
     @Override
-    public ResponseEntity<ProductDTO> createNewProduct(ProductDTO ProductDTO) {
+    public ResponseEntity<ProductModel> createNewProduct(ProductModel productModel) {
         return null;
     }
 
@@ -21,17 +22,17 @@ public class ProductController  implements com.example.Product.api.ProductApi {
     }
 
     @Override
-    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+    public ResponseEntity<List<ProductModel>> getAllProducts() {
         return null;
     }
 
     @Override
-    public ResponseEntity<ProductDTO> getProductById(Long id) {
+    public ResponseEntity<ProductModel> getProductById(Long id) {
         return null;
     }
 
     @Override
-    public ResponseEntity<ProductDTO> updateProduct(Long id, ProductDTO ProductDTO) {
+    public ResponseEntity<ProductModel> updateProduct(Long id, ProductModel productModel) {
         return null;
     }
 }

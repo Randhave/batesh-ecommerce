@@ -8,7 +8,7 @@
         <artifactId>product-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.product.management.spec</groupId>
+<!--    <groupId>com.product.management.spec</groupId>-->
     <artifactId>product-management-spec</artifactId>
     <name>product-management-spec</name>
     <packaging>jar</packaging>
