@@ -8,7 +8,7 @@
         <artifactId>product-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-<!--    <groupId>com.product.management.spec</groupId>-->
+    <!--    <groupId>com.product.management.spec</groupId>-->
     <artifactId>product-management-spec</artifactId>
     <name>product-management-spec</name>
     <packaging>jar</packaging>
@@ -93,7 +93,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/apis/product-client-api-v1-spec.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/apis/product-client-api-v1-spec.yaml
+                            </inputSpec>
                             <output>${project.build.directory}/generated-sources/openapi</output>
                             <generatorName>spring</generatorName>
                             <!-- depends upon this package names automatically generates models and apis packages -->
@@ -101,7 +102,8 @@
                             <modelPackage>com.product.models</modelPackage>
                             <strictSpec>true</strictSpec>
                             <configOptions>
-                                <controllerThrowsExceptions>java.io.IOException,com.product.NotFoundException</controllerThrowsExceptions>
+                                <controllerThrowsExceptions>java.io.IOException,com.product.NotFoundException
+                                </controllerThrowsExceptions>
                                 <skipDefaultInterface>true</skipDefaultInterface>
                                 <useBeanValidation>true</useBeanValidation>
                                 <useClassLevelBeanValidation>false</useClassLevelBeanValidation>
@@ -129,7 +131,8 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/apis/review-client-api-v1-spec.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/apis/review-client-api-v1-spec.yaml
+                            </inputSpec>
                             <output>${project.build.directory}/generated-sources/openapi</output>
                             <generatorName>spring</generatorName>
                             <!-- depends upon this package names automatically generates models and apis packages -->
@@ -137,7 +140,8 @@
                             <modelPackage>com.product.models</modelPackage>
                             <strictSpec>true</strictSpec>
                             <configOptions>
-                                <controllerThrowsExceptions>java.io.IOException,com.product.NotFoundException</controllerThrowsExceptions>
+                                <controllerThrowsExceptions>java.io.IOException,com.product.NotFoundException
+                                </controllerThrowsExceptions>
                                 <skipDefaultInterface>true</skipDefaultInterface>
                                 <useBeanValidation>true</useBeanValidation>
                                 <useClassLevelBeanValidation>false</useClassLevelBeanValidation>

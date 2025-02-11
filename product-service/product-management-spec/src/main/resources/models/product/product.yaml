@@ -7,12 +7,9 @@ components:
     ProductModel:
       type: object
       properties:
-        id:
+        productId:
           type: integer
           format: int64
-          readOnly: true
-        productId:
-          type: string
           example: "PROD-001"
           description: Unique product ID
         name:

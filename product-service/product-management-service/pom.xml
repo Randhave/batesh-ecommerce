@@ -7,13 +7,15 @@
         <artifactId>product-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-<!--    <groupId>com.product.management.service</groupId>-->
+    <!--    <groupId>com.product.management.service</groupId>-->
     <artifactId>product-management-service</artifactId>
     <name>product-management-service</name>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
-        <org.mapstruct.version>1.6.3</org.mapstruct.version>
+        <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+        <org.projectlombok.version>1.18.20</org.projectlombok.version>
+        <org.maven.version>3.8.1</org.maven.version>
     </properties>
 
     <dependencies>
@@ -46,13 +48,18 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
         </dependency>
 
-<!--        spec dependency of Product management specification-->
+        <!--   spec dependency of Product management specification-->
         <dependency>
             <groupId>com.batesh</groupId>
             <artifactId>product-management-spec</artifactId>
@@ -68,16 +75,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-        <!-- Logback implementation -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <!-- Log4j implementation -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.batesh</groupId>
             <artifactId>order-management-spec</artifactId>
@@ -89,19 +87,31 @@
 
     <build>
         <plugins>
-            <!--  added plugin for mapstruct configuration-->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+<!--                <version>${org.maven.version}</version>-->
                 <configuration>
                     <source>17</source> <!-- depending on your project -->
                     <target>17</target> <!-- depending on your project -->
                     <annotationProcessorPaths>
+                        <!--  added plugin for mapstruct configuration-->
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
                             <version>${org.mapstruct.version}</version>
+                        </path>
+                        <!--   added plugin for lombok and sl4j -->
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
