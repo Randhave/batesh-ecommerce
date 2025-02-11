@@ -7,16 +7,16 @@
 
     <changeSet id="create-product-table" author="aniket-randhave">
         <createTable tableName="product">
-            <column name="productId" type="BIGINT" autoIncrement="true">
+            <column name="product_id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="VARCHAR(255)" defaultOnNull="false"/>
+            <column name="name" type="VARCHAR(255)"  />
             <column name="description" type="TEXT"/>
-            <column name="price" type="DECIMAL(10, 2)" defaultOnNull="false"/>
+            <column name="price" type="DECIMAL(10, 2)"  />
             <column name="discount" type="DECIMAL(10, 2)"/>
-            <column name="category" type="VARCHAR(255)" defaultOnNull="false"/>
+            <column name="category" type="VARCHAR(255)" />
             <column name="sub_category" type="VARCHAR(255)"/>
-            <column name="brand" type="VARCHAR(255)" defaultOnNull="false"/>
+            <column name="brand" type="VARCHAR(255)" />
             <column name="model" type="VARCHAR(255)"/>
             <column name="color" type="VARCHAR(255)"/>
             <column name="size" type="VARCHAR(255)"/>
@@ -26,10 +26,10 @@
             <column name="warranty" type="VARCHAR(255)"/>
             <column name="return_policy" type="TEXT"/>
             <column name="shipping" type="TEXT"/>
-            <column name="created_by" type="VARCHAR(255)" defaultOnNull="false" defaultValue="SYSTEM"/>
-            <column name="created_at" type="TIMESTAMP" defaultOnNull="false" defaultValue="CURRENT_TIMESTAMP"/>
-            <column name="updated_by" type="VARCHAR(255)" defaultValue="SYSTEM"/>
-            <column name="updated_at" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP"/>
+            <column name="created_by" type="VARCHAR(255)"  defaultValue="SYSTEM"/>
+            <column name="created_at" type="TIMESTAMP"  defaultValue="CURRENT_TIMESTAMP"/>
+            <column name="updated_by" type="VARCHAR(255)"  />
+            <column name="updated_at" type="TIMESTAMP"  defaultValue="CURRENT_TIMESTAMP"/>
         </createTable>
     </changeSet>
 

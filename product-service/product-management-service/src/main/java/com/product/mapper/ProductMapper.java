@@ -1,15 +1,16 @@
 package com.product.mapper;
 
-import com.product.models.ProductModel;
 import com.product.entity.Product;
+import com.product.models.ProductModel;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProductMapper {
 
-    ProductMapper PRODUCT_MAPPER = Mappers.getMapper(ProductMapper.class);
+    ProductMapper INSTANCE  = Mappers.getMapper(ProductMapper.class);
 
     ProductModel mapProductEntityToProductModel(Product product);
 

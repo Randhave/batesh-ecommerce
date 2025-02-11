@@ -24,6 +24,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductModel'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 400
+                message: Invalid request data
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 500
+                message: An unexpected error occurred
       tags:
         - Products
 
@@ -39,6 +57,24 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ProductModel'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 400
+                message: Invalid request data
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 500
+                message: An unexpected error occurred
       tags:
         - Products
 
@@ -60,6 +96,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductModel'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 400
+                message: Invalid request data
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 500
+                message: An unexpected error occurred
       tags:
         - Products
 
@@ -86,6 +140,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductModel'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 400
+                message: Invalid request data
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 500
+                message: An unexpected error occurred
       tags:
         - Products
 
@@ -102,10 +174,41 @@ paths:
       responses:
         '200':
           description: Product deleted successfully
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 400
+                message: Invalid request data
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 500
+                message: An unexpected error occurred
       tags:
         - Products
 
 components:
   schemas:
+    ErrorModel:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The error code
+        message:
+          type: string
+          description: The error message
+      required:
+        - code
+        - message
     ProductModel:
       $ref: "../models/product/product.yaml#/components/schemas/ProductModel"

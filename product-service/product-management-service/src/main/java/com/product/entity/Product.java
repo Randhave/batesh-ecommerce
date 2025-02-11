@@ -16,28 +16,28 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "productId")
+    @Column(name = "product_id")
     private Long productId;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price")
     private Double price;
 
     @Column(name = "discount")
     private Double discount;
 
-    @Column(name = "category", nullable = false)
+    @Column(name = "category")
     private String category;
 
     @Column(name = "sub_category")
     private String subCategory;
 
-    @Column(name = "brand", nullable = false)
+    @Column(name = "brand")
     private String brand;
 
     @Column(name = "model")

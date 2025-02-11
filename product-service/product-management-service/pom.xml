@@ -7,7 +7,6 @@
         <artifactId>product-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <!--    <groupId>com.product.management.service</groupId>-->
     <artifactId>product-management-service</artifactId>
     <name>product-management-service</name>
     <version>0.0.1-SNAPSHOT</version>
@@ -91,18 +90,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-<!--                <version>${org.maven.version}</version>-->
                 <configuration>
                     <source>17</source> <!-- depending on your project -->
                     <target>17</target> <!-- depending on your project -->
                     <annotationProcessorPaths>
                         <!--  added plugin for mapstruct configuration-->
-                        <path>
-                            <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct-processor</artifactId>
-                            <version>${org.mapstruct.version}</version>
-                        </path>
-                        <!--   added plugin for lombok and sl4j -->
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
