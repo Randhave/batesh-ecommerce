@@ -3,6 +3,6 @@ package com.product.handler;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class BadRequestException extends RuntimeException{
+public class NotFoundException extends RuntimeException{
     private String message;
 }

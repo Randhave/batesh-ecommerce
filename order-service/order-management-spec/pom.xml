@@ -96,8 +96,8 @@
                             <output>${project.build.directory}/generated-sources/openapi</output>
                             <generatorName>spring</generatorName>
                             <!-- depends upon this package names automatically generates models and apis packages -->
-                            <apiPackage>com.example.Product.api</apiPackage>
-                            <modelPackage>com.example.Product.model</modelPackage>
+                            <apiPackage>com.order.api</apiPackage>
+                            <modelPackage>com.order.model</modelPackage>
                             <strictSpec>true</strictSpec>
                             <configOptions>
                                 <controllerThrowsExceptions>java.io.IOException,com.example.NotFoundException</controllerThrowsExceptions>

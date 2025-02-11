@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  title: Order model
+  version: 1.0.0
+type: object
+components:
+  schemas:
+    OrderModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        customerId:
+          type: integer
+          format: int64
+        orderDate:
+          type: string
+          format: date-time
+        total:
+          type: number
+          format: double
+        status:
+          type: string
+          enum:
+            - PENDING
+            - SHIPPED
+            - DELIVERED
+            - CANCELED

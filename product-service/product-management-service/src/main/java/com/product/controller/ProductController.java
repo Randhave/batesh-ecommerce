@@ -23,7 +23,7 @@ public class ProductController implements ProductsApi {
     @Override
     public ResponseEntity<ProductModel> createNewProduct(ProductModel productModel) {
         log.info("Creating new product with id: {}, name: {}, description: {}", productModel.getProductId(), productModel.getName(), productModel.getDescription());
-        ProductModel product = productService.createProduct(productModel);
+        var product = productService.createProduct(productModel);
         log.info("Product created successfully with id: {}", product.getProductId());
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
@@ -39,7 +39,7 @@ public class ProductController implements ProductsApi {
     @Override
     public ResponseEntity<List<ProductModel>> getAllProducts() {
         log.info("Fetching all products");
-        List<ProductModel> products = productService.getAllProducts();
+        var products = productService.getAllProducts();
         log.info("Fetched {} products", products.size());
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
@@ -47,7 +47,7 @@ public class ProductController implements ProductsApi {
     @Override
     public ResponseEntity<ProductModel> getProductById(Long id) {
         log.info("Fetching product with id: {}", id);
-        ProductModel product = productService.getProductById(id);
+        var product = productService.getProductById(id);
         if (product != null) {
             log.info("Product found with id: {}", id);
         } else {

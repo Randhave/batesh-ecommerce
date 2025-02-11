@@ -1,4 +1,4 @@
 package com.product.entity;
 
-public class Employee {
+public class Customer {
 }

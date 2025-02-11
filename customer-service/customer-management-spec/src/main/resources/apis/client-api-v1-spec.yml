@@ -4,7 +4,7 @@ info:
   version: 1.0.0
 
 tags:
-  - name: Employee
+  - name: Customers
 
 paths:
   /employees:
@@ -25,7 +25,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EmployeeDTO'
       tags:
-        - Employee
+        - Customers
 
     get:
       operationId: getAllEmployees
@@ -40,7 +40,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/EmployeeDTO'
       tags:
-        - Employee
+        - Customers
 
   /employees/{id}:
     get:
@@ -61,7 +61,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EmployeeDTO'
       tags:
-        - Employee
+        - Customers
 
     put:
       operationId: updateEmployee
@@ -87,7 +87,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EmployeeDTO'
       tags:
-        - Employee
+        - Customers
 
     delete:
       operationId: deleteEmployeeById
@@ -103,7 +103,7 @@ paths:
         '200':
           description: Employee deleted successfully
       tags:
-        - Employee
+        - Customers
 
 components:
   schemas:

@@ -23,8 +23,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductModel createProduct(ProductModel product) {
         log.info("Creating new product with name: {}", product.getName());
-        Product newproduct = productRepository.save(productMapper.mapProductModelToProductEntity(product));
-        ProductModel createdProduct = productMapper.mapProductEntityToProductModel(newproduct);
+        var newproduct = productRepository.save(productMapper.mapProductModelToProductEntity(product));
+        var createdProduct = productMapper.mapProductEntityToProductModel(newproduct);
         log.info("Product created successfully with ID: {}", createdProduct.getProductId());
         return createdProduct;
     }
@@ -32,8 +32,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductModel getProductById(Long id) {
         log.info("Getting product by ID: {}", id);
-        Product product = productRepository.findById(id).orElseThrow(() -> new BadRequestException(String.format("Product not found with ID: " + id)));
-        ProductModel productModel = productMapper.mapProductEntityToProductModel(product);
+        var product = productRepository.findById(id).orElseThrow(() -> new BadRequestException(String.format("Product not found with ID: " + id)));
+        var productModel = productMapper.mapProductEntityToProductModel(product);
         log.info("Product found with ID: {}", id);
         return productModel;
     }
@@ -41,17 +41,17 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductModel> getAllProducts() {
         log.info("Getting all products");
-        List<Product> products = productRepository.findAll();
-        List<ProductModel> productModels = products.stream().map(productMapper::mapProductEntityToProductModel).toList();
+        var products = productRepository.findAll();
+        var productModels = products.stream().map(productMapper::mapProductEntityToProductModel).toList();
         log.info("Found {} products", products.size());
         return productModels;
     }
 
     @Override
-    public ProductModel updateProduct(Long id, ProductModel product) {
+    public ProductModel updateProduct(Long id, ProductModel productModel) {
         log.info("Updating product with ID: {}", id);
-        ProductModel existingProduct = getProductById(id);
-        Product updatedProduct = productMapper.mapProductModelToProductEntity(existingProduct);
+        var existingProduct = getProductById(id);
+        var updatedProduct = productMapper.mapProductModelToProductEntity(existingProduct);
         return productMapper.mapProductEntityToProductModel(updatedProduct);
     }
 

@@ -1,51 +1,51 @@
 openapi: 3.0.3
 info:
-  title: Product API
+  title: Order API
   version: 1.0.0
 
 tags:
-  - name: Product
+  - name: Orders
 
 paths:
-  /Products:
+  /orders:
     post:
-      operationId: createNewProduct
-      summary: Create a new Product
+      operationId: createNewOrder
+      summary: Create a new Order
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductDTO'
+              $ref: '#/components/schemas/OrderModel'
       responses:
         '200':
-          description: Product created successfully
+          description: Order created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductDTO'
+                $ref: '#/components/schemas/OrderModel'
       tags:
-        - Product
+        - Orders
 
     get:
-      operationId: getAllProducts
-      summary: Get all Products
+      operationId: getAllOrders
+      summary: Get all Orders
       responses:
         '200':
-          description: List of all Products
+          description: List of all Orders
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ProductDTO'
+                  $ref: '#/components/schemas/OrderModel'
       tags:
-        - Product
+        - Orders
 
-  /Products/{id}:
+  /orders/{id}:
     get:
-      operationId: getProductById
-      summary: Get Product by ID
+      operationId: getOrderById
+      summary: Get Order by ID
       parameters:
         - name: id
           in: path
@@ -55,17 +55,17 @@ paths:
             format: int64
       responses:
         '200':
-          description: Product found
+          description: Order found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductDTO'
+                $ref: '#/components/schemas/OrderModel'
       tags:
-        - Product
+        - Orders
 
     put:
-      operationId: updateProduct
-      summary: Update an Product by ID
+      operationId: updateOrder
+      summary: Update an Order by ID
       parameters:
         - name: id
           in: path
@@ -78,20 +78,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductDTO'
+              $ref: '#/components/schemas/OrderModel'
       responses:
         '200':
-          description: Product updated successfully
+          description: Order updated successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductDTO'
+                $ref: '#/components/schemas/OrderModel'
       tags:
-        - Product
+        - Orders
 
     delete:
-      operationId: deleteProductById
-      summary: Delete an Product by ID
+      operationId: deleteOrderById
+      summary: Delete an Order by ID
       parameters:
         - name: id
           in: path
@@ -101,11 +101,11 @@ paths:
             format: int64
       responses:
         '200':
-          description: Product deleted successfully
+          description: Order deleted successfully
       tags:
-        - Product
+        - Orders
 
 components:
   schemas:
-    ProductDTO:
-      $ref: "../models/Product/add-Product.yaml#/components/schemas/ProductDTO"
+    OrderModel:
+      $ref: "../models/order/order.yaml#/components/schemas/OrderModel"

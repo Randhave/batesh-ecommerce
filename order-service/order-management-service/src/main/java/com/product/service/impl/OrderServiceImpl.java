@@ -1,4 +1,4 @@
 package com.product.service.impl;
 
-public class ProductServiceImpl {
+public class OrderServiceImpl {
 }
