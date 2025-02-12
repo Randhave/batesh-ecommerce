@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: Payment API
+  description: API for managing payments
+  version: 1.0.0
+
+components:
+  schemas:
+    PaymentModel:
+      type: object
+      properties:
+        paymentId:
+          type: integer
+          format: int64
+          description: Unique identifier for the payment
+        paymentMethod:
+          type: string
+          description: Payment method used (e.g. credit card, bank transfer)
+        paymentDate:
+          type: string
+          format: date-time
+          description: Date and time when the payment was made
+        amount:
+          type: integer
+          format: int64
+          description: Amount paid
+        orderId:
+          type: integer
+          format: int64
+          description: Order ID associated with the payment
+        createdBy:
+          type: string
+          description: User who created the payment
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was created
+        updatedBy:
+          type: string
+          description: User who last updated the payment
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was last updated
+      required:
+        - paymentMethod
+        - paymentDate
+        - amount
+        - orderId
+        - createdBy
+        - createdAt

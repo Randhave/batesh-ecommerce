@@ -1,0 +1,45 @@
+
+components:
+  schemas:
+    ShippingModel:
+      type: object
+      properties:
+        shippingId:
+          type: integer
+          format: int64
+          description: Unique identifier for the shipping
+        shippingMethod:
+          type: string
+          description: Shipping method used (e.g. ground, air, express)
+        shippingDate:
+          type: string
+          format: date-time
+          description: Date and time when the shipping was scheduled
+        shippingAddress:
+          type: string
+          description: Shipping address
+        orderId:
+          type: integer
+          format: int64
+          description: Order ID associated with the shipping
+        createdBy:
+          type: string
+          description: User who created the shipping
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the shipping was created
+        updatedBy:
+          type: string
+          description: User who last updated the shipping
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the shipping was last updated
+      required:
+        - shippingMethod
+        - shippingDate
+        - shippingAddress
+        - orderId
+        - createdBy
+        - createdAt

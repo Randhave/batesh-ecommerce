@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: Order Item API
+  description: API for managing order items
+  version: 1.0.0
+
+components:
+  schemas:
+    OrderItemModel:
+      type: object
+      properties:
+        orderItemId:
+          type: integer
+          format: int64
+          description: Unique identifier for the order item
+        productId:
+          type: integer
+          format: int64
+          description: Product ID associated with the order item
+        quantity:
+          type: integer
+          format: int32
+          description: Quantity of the product in the order item
+        unitPrice:
+          type: integer
+          format: int64
+          description: Unit price of the product in the order item
+        orderId:
+          type: integer
+          format: int64
+          description: Order ID associated with the order item
+        createdBy:
+          type: string
+          description: User who created the order item
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the order item was created
+        updatedBy:
+          type: string
+          description: User who last updated the order item
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the order item was last updated
+      required:
+        - orderItemId
+        - productId
+        - quantity
+        - unitPrice
+        - orderId
+        - createdBy
+        - createdAt

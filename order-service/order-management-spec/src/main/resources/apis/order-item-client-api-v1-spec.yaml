@@ -1,0 +1,290 @@
+openapi: 3.0.0
+info:
+  title: Order Item API
+  description: API for managing order items
+  version: 1.0.0
+tags:
+  - name: OrderItems
+
+paths:
+  /order-items:
+    post:
+      summary: Create a new order item
+      description: Create a new order item
+      operationId: createOrderItem
+      tags:
+        - OrderItems
+      requestBody:
+        description: Order item to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderItemModel'
+      responses:
+        '201':
+          description: Order item created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItemModel'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+    get:
+      summary: Get an order item by ID
+      description: Get an order item by ID
+      operationId: getOrderItemById
+      tags:
+        - Order Items
+      parameters:
+        - in: path
+          name: orderItemId
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: Order item ID
+      responses:
+        '200':
+          description: Order item retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItemModel'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+    put:
+      summary: Update an order item
+      description: Update an order item
+      operationId: updateOrderItem
+      tags:
+        - OrderItems
+      parameters:
+        - in: path
+          name: orderItemId
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: Order item ID
+      requestBody:
+        description: Order item to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderItemModel'
+      responses:
+        '200':
+          description: Order item updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItemModel'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+    delete:
+      summary: Delete an order item
+      description: Delete an order item
+      operationId: deleteOrderItem
+      tags:
+        - OrderItems
+      parameters:
+        - in: path
+          name: orderItemId
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: Order item ID
+      responses:
+        '204':
+          description: Order item deleted successfully
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                  message:
+                    type: string
+                    description: Error details
+                  statusCode:
+                    type: integer
+                    description: HTTP status code
+
+components:
+  schemas:
+    OrderItemModel:
+      $ref: "../models/order/OrderItem.yaml#/components/schemas/OrderItemModel"

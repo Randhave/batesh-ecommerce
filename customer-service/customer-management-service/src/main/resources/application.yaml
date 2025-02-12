@@ -1,38 +1,40 @@
 server:
-  port: 8081
-
+  port: 8083
+  servlet:
+    context-path: /customer-service
 spring:
+  application:
+    name: customer-service
   profiles:
     active:
       - true
   datasource:
-    url: jdbc:h2:mem:ProductDb
-    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:customer-service
     username: sa
     password:
-
+    driver-class-name: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
-
+    properties:
+      hibernate:
+        format_sql: true
   h2:
     console:
       enabled: true
       path: /h2-console
-      settings:
-        trace: false
-        web-allow-others: true
+
   liquibase:
     change-log: classpath:db/changelog/0.master.xml # main liquibase file
-    enabled: false
+    enabled: false # Enable Liquibase
+    default-schema: PUBLIC # Specify the default schema for H2
+    contexts:
+      - dev
+      - prod
 
 logging:
-  level:
-    com.Product_management_service: DEBUG
-    org.springframework: INFO
-    org.hibernate: INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

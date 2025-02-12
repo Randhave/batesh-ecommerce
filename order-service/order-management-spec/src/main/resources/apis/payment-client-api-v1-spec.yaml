@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: Payment API
+  description: API for managing payments
+  version: 1.0.0
+tags:
+  - name: Payments
+
+paths:
+  /payments:
+    post:
+      summary: Create a new payment
+      description: Create a new payment
+      operationId: createPayment
+      tags:
+        - Payments
+      requestBody:
+        description: Payment to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentModel'
+      responses:
+        '201':
+          description: Payment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentModel'
+        '400':
+          description: Invalid request
+    get:
+      summary: Get all payments
+      description: Get all payments
+      operationId: getPayments
+      tags:
+        - Payments
+      responses:
+        '200':
+          description: Payments retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentModel'
+        '404':
+          description: No payments found
+
+    put:
+      summary: Update a payment
+      description: Update a payment
+      operationId: updatePayment
+      tags:
+        - Payments
+      parameters:
+        - in: path
+          name: paymentId
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: Payment ID
+      requestBody:
+        description: Payment to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentModel'
+      responses:
+        '200':
+          description: Payment updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentModel'
+        '400':
+          description: Invalid request
+    delete:
+      summary: Delete a payment
+      description: Delete a payment
+      operationId: deletePayment
+      tags:
+        - Payments
+      parameters:
+        - in: path
+          name: paymentId
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: Payment ID
+      responses:
+        '204':
+          description: Payment deleted successfully
+        '404':
+          description: Payment not found
+
+components:
+  schemas:
+    PaymentModel:
+      $ref: "../models/order/Payment.yaml#/components/schemas/PaymentModel"

@@ -11,26 +11,29 @@ spring:
       - true
   datasource:
     url: jdbc:h2:mem:order-service
-    driver-class-name: org.h2.Driver
     username: sa
     password:
-
+    driver-class-name: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
-
+    properties:
+      hibernate:
+        format_sql: true
   h2:
     console:
       enabled: true
       path: /h2-console
-      settings:
-        trace: false
-        web-allow-others: true
+
   liquibase:
     change-log: classpath:db/changelog/0.master.xml # main liquibase file
-    enabled: false
+    enabled: false # Enable Liquibase
+    default-schema: PUBLIC # Specify the default schema for H2
+    contexts:
+      - dev
+      - prod
 
 logging:
   pattern:

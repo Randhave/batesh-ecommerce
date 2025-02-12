@@ -86,16 +86,120 @@
                 <version>6.6.0</version>
                 <executions>
                     <execution>
-                        <id>generate-api</id>
+                        <id>1.generate-api-for-order-spec</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/apis/client-api-v1-spec.yml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/apis/order-client-api-v1-spec.yml</inputSpec>
                             <output>${project.build.directory}/generated-sources/openapi</output>
                             <generatorName>spring</generatorName>
                             <!-- depends upon this package names automatically generates models and apis packages -->
+                            <apiPackage>com.order.api</apiPackage>
+                            <modelPackage>com.order.model</modelPackage>
+                            <strictSpec>true</strictSpec>
+                            <configOptions>
+                                <controllerThrowsExceptions>java.io.IOException,com.example.NotFoundException</controllerThrowsExceptions>
+                                <skipDefaultInterface>true</skipDefaultInterface>
+                                <useBeanValidation>true</useBeanValidation>
+                                <useClassLevelBeanValidation>false</useClassLevelBeanValidation>
+                                <useTags>true</useTags>
+                                <java8>true</java8>
+                                <useOptional>false</useOptional>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <dateLibrary>java8</dateLibrary>
+                                <bigDecimalAsString>true</bigDecimalAsString>
+                                <useBeanValidation>true</useBeanValidation>
+                                <interfaceOnly>true</interfaceOnly>
+                                <generateInterfaces>true</generateInterfaces>
+                                <useSpringBoot3>true</useSpringBoot3>
+                            </configOptions>
+                            <additionalProperties>
+                                <publicMethods>true</publicMethods>
+                            </additionalProperties>
+                            <!-- Fix output directory structure -->
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>2.generate-api-for-payment-spec</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/apis/payment-client-api-v1-spec.yaml</inputSpec>
+                            <output>${project.build.directory}/generated-sources/openapi</output>
+                            <generatorName>spring</generatorName>
+                            <apiPackage>com.order.api</apiPackage>
+                            <modelPackage>com.order.model</modelPackage>
+                            <strictSpec>true</strictSpec>
+                            <configOptions>
+                                <controllerThrowsExceptions>java.io.IOException,com.example.NotFoundException</controllerThrowsExceptions>
+                                <skipDefaultInterface>true</skipDefaultInterface>
+                                <useBeanValidation>true</useBeanValidation>
+                                <useClassLevelBeanValidation>false</useClassLevelBeanValidation>
+                                <useTags>true</useTags>
+                                <java8>true</java8>
+                                <useOptional>false</useOptional>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <dateLibrary>java8</dateLibrary>
+                                <bigDecimalAsString>true</bigDecimalAsString>
+                                <useBeanValidation>true</useBeanValidation>
+                                <interfaceOnly>true</interfaceOnly>
+                                <generateInterfaces>true</generateInterfaces>
+                                <useSpringBoot3>true</useSpringBoot3>
+                            </configOptions>
+                            <additionalProperties>
+                                <publicMethods>true</publicMethods>
+                            </additionalProperties>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>3.generate-api-for-shipping-spec</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/apis/shipping-client-api-v1-spec.yaml</inputSpec>
+                            <output>${project.build.directory}/generated-sources/openapi</output>
+                            <generatorName>spring</generatorName>
+                            <apiPackage>com.order.api</apiPackage>
+                            <modelPackage>com.order.model</modelPackage>
+                            <strictSpec>true</strictSpec>
+                            <configOptions>
+                                <controllerThrowsExceptions>java.io.IOException,com.example.NotFoundException</controllerThrowsExceptions>
+                                <skipDefaultInterface>true</skipDefaultInterface>
+                                <useBeanValidation>true</useBeanValidation>
+                                <useClassLevelBeanValidation>false</useClassLevelBeanValidation>
+                                <useTags>true</useTags>
+                                <java8>true</java8>
+                                <useOptional>false</useOptional>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <dateLibrary>java8</dateLibrary>
+                                <bigDecimalAsString>true</bigDecimalAsString>
+                                <useBeanValidation>true</useBeanValidation>
+                                <interfaceOnly>true</interfaceOnly>
+                                <generateInterfaces>true</generateInterfaces>
+                                <useSpringBoot3>true</useSpringBoot3>
+                            </configOptions>
+                            <additionalProperties>
+                                <publicMethods>true</publicMethods>
+                            </additionalProperties>
+                            <!-- Fix output directory structure -->
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>4.generate-api-for-order-item-spec</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/apis/order-item-client-api-v1-spec.yaml</inputSpec>
+                            <output>${project.build.directory}/generated-sources/openapi</output>
+                            <generatorName>spring</generatorName>
                             <apiPackage>com.order.api</apiPackage>
                             <modelPackage>com.order.model</modelPackage>
                             <strictSpec>true</strictSpec>

@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info:
+  title: Shipping API
+  description: API for managing shipping
+  version: 1.0.0
+tags:
+  - name: Shippings
+
+paths:
+  /shipping:
+    post:
+      summary: Create a new shipping
+      description: Create a new shipping
+      operationId: createShipping
+      tags:
+        - Shippings
+      requestBody:
+        description: Shipping to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShippingModel'
+      responses:
+        '201':
+          description: Shipping created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingModel'
+        '400':
+          description: Invalid request
+    get:
+      summary: Get all shipping
+      description: Get all shipping
+      operationId: getShipping
+      tags:
+        - Shippings
+      responses:
+        '200':
+          description: Shipping retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShippingModel'
+        '404':
+          description: No shipping found
+    put:
+      summary: Update a shipping
+      description: Update a shipping
+      operationId: updateShipping
+      tags:
+        - Shippings
+      parameters:
+        - in: path
+          name: shippingId
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: Shipping ID
+      requestBody:
+        description: Shipping to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShippingModel'
+      responses:
+        '200':
+          description: Shipping updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingModel'
+        '400':
+          description: Invalid request
+    delete:
+      summary: Delete a shipping
+      description: Delete a shipping
+      operationId: deleteShipping
+      tags:
+        - Shippings
+      parameters:
+        - in: path
+          name: shippingId
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: Shipping ID
+      responses:
+        '204':
+          description: Shipping deleted successfully
+        '404':
+          description: Shipping not found
+components:
+  schemas:
+    ShippingModel:
+      $ref: "../models/order/Shipping.yaml#/components/schemas/ShippingModel"
