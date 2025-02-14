@@ -12,7 +12,18 @@
     <artifactId>order-management-spec</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <openapi-generator.version>7.2.0</openapi-generator.version>
+        <openapi-generator-maven-plugin.version>6.6.0</openapi-generator-maven-plugin.version>
+        <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
+    </properties>
+
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!-- Jakarta dependencies -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
@@ -63,6 +74,11 @@
             <artifactId>jackson-databind-nullable</artifactId>
             <version>0.2.6</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.14.1</version>
+        </dependency>
 
         <!-- Swagger annotations -->
         <dependency>
@@ -76,6 +92,15 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.batesh</groupId>
+            <artifactId>product-management-spec</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -223,6 +248,72 @@
                                 <publicMethods>true</publicMethods>
                             </additionalProperties>
                             <!-- Fix output directory structure -->
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>generate-product-client</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+
+
+                        <configuration>
+                            <skipValidateSpec>true</skipValidateSpec>
+                            <generatorName>spring</generatorName>
+                            <generateModels>false</generateModels>
+                            <skipValidateSpec>true</skipValidateSpec>
+                            <inputSpec>../product-service/product-management-spec/src/main/resources/apis/product-client-api-v1-spec.yaml</inputSpec>
+                            <output>${project.build.directory}/generated-sources/openapi</output>
+                            <configOptions>
+                                <controllerThrowsExceptions>java.io.IOException,com.example.NotFoundException</controllerThrowsExceptions>
+                                <skipDefaultInterface>true</skipDefaultInterface>
+                                <useBeanValidation>true</useBeanValidation>
+                                <useTags>true</useTags>
+                                <java8>false</java8>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <dateLibrary>java8</dateLibrary>
+                                <bigDecimalAsString>true</bigDecimalAsString>
+                                <interfaceOnly>true</interfaceOnly>
+                                <generateInterfaces>true</generateInterfaces>
+                                <useSpringBoot3>true</useSpringBoot3>
+                                <apiPackage>com.product.apis</apiPackage>
+                                <modelPackage>com.product.models</modelPackage>
+                                <library>spring-boot</library>
+                                <language>java</language>
+                                <skipTests>true</skipTests>
+                                <skipValidation>true</skipValidation>
+                                <skipExample>true</skipExample>
+                                <skipExampleValidation>true</skipExampleValidation>
+                                <skipSupportingFiles>true</skipSupportingFiles>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-product-models</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <generatorName>java</generatorName>
+                            <generateApis>false</generateApis>
+                            <generateModels>true</generateModels>
+                            <inputSpec>../product-service/product-management-spec/src/main/resources/apis/product-client-api-v1-spec.yaml</inputSpec>
+                            <output>${project.build.directory}/generated-sources/openapi</output>
+                            <configOptions>
+                                <library>native</library>
+                                <serializationLibrary>jackson</serializationLibrary>
+                                <dateLibrary>java8</dateLibrary>
+                                <openApiNullable>false</openApiNullable>
+                                <useJakartaEe>true</useJakartaEe>
+                                <apiPackage>com.product.apis</apiPackage>
+                                <modelPackage>com.product.models</modelPackage>
+                                <skipTests>true</skipTests>
+                                <skipValidation>true</skipValidation>
+                                <skipExample>true</skipExample>
+                                <skipExampleValidation>true</skipExampleValidation>
+                                <skipSupportingFiles>true</skipSupportingFiles>
+                            </configOptions>
                         </configuration>
                     </execution>
                 </executions>

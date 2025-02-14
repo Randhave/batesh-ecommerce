@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/batesh-ecommerce.iml" filepath="$PROJECT_DIR$/.idea/batesh-ecommerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-service/order-management-serivce/order-management-service.iml" filepath="$PROJECT_DIR$/order-service/order-management-serivce/order-management-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/order-service/order-management-spec/order-management-spec.iml" filepath="$PROJECT_DIR$/order-service/order-management-spec/order-management-spec.iml" />
       <module fileurl="file://$PROJECT_DIR$/product-service/product-management-spec/product-management-spec.iml" filepath="$PROJECT_DIR$/product-service/product-management-spec/product-management-spec.iml" />
     </modules>
