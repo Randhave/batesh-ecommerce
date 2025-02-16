@@ -84,7 +84,6 @@ components:
                 type: string
                 example: "A15 Bionic chip"
       required:
-        - productId
         - name
         - description
         - price

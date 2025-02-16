@@ -17,14 +17,13 @@ import java.util.List;
 @Slf4j
 public class OrderServiceImpl implements OrderService {
 
-    //private final ProductsApi productsApi;
+    private final ProductsApi productsApi;
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
 
 
     @Override
     public OrderModel createNewOrder(OrderModel orderModel) {
-        //var allProducts = productsApi.getAllProducts();
         var savedOrderDetails = orderRepository.save(orderMapper.mapToModelToEntity(orderModel));
         log.debug("order created success fully for orderId : {}", savedOrderDetails.getOrderId());
         return orderMapper.mapEntityToModel(savedOrderDetails);
@@ -32,6 +31,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderModel> getAllOrders() {
+        var allProducts = productsApi.getAllProducts();
         var allOrders = orderRepository.findAll();
         return allOrders.stream().map(orderMapper::mapEntityToModel).toList();
     }

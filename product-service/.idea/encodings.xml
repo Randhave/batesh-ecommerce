@@ -4,6 +4,8 @@
     <file url="file://$PROJECT_DIR$/employee-management-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/employee-management-service/target/generated-sources/openapi/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/employee-management-spec/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product-management-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/product-management-spec/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

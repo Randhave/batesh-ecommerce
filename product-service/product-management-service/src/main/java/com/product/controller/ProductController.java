@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/client-api/v1/")
 @Slf4j
 @RequiredArgsConstructor
 public class ProductController implements ProductsApi {
-    private final ProductService productService;
 
+    private final ProductService productService;
 
     @Override
     public ResponseEntity<ProductModel> createNewProduct(ProductModel productModel) {

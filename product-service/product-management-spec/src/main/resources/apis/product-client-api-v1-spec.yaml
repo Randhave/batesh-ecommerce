@@ -7,7 +7,7 @@ tags:
   - name: Products
 
 paths:
-  /products:
+  /client-api/v1/products:
     post:
       operationId: createNewProduct
       summary: Create a new Product
@@ -78,7 +78,7 @@ paths:
       tags:
         - Products
 
-  /products/{id}:
+  /client-api/v1/products/{id}:
     get:
       operationId: getProductById
       summary: Get Product by ID

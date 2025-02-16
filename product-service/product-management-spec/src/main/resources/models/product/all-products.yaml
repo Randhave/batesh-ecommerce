@@ -1,0 +1,8 @@
+openapi: 3.0.3
+info:
+  title: Product models
+  version: 1.0.0
+components:
+  schemas:
+    Products:
+      type: array
