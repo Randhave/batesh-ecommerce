@@ -23,6 +23,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
 
         <!-- Jakarta dependencies -->
         <dependency>
@@ -88,6 +92,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>2.2.21</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
@@ -101,14 +110,32 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.2.5.Final</version>
+        </dependency>
+
     </dependencies>
 
     <build>
+<!--        <sourceDirectory>src/main/java</sourceDirectory>-->
+<!--        <testSourceDirectory>src/test/java</testSourceDirectory>-->
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <excludes>-->
+<!--                    <exclude>**/*.yaml</exclude>-->
+<!--                </excludes>-->
+<!--            </resource>-->
+<!--        </resources>-->
+
         <plugins>
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>6.6.0</version>
+                <version>${openapi-generator-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>1.generate-api-for-order-spec</id>
@@ -120,7 +147,6 @@
                             <inputSpec>${project.basedir}/src/main/resources/apis/order-client-api-v1-spec.yml</inputSpec>
                             <output>${project.build.directory}/generated-sources/openapi</output>
                             <generatorName>spring</generatorName>
-                            <!-- depends upon this package names automatically generates models and apis packages -->
                             <apiPackage>com.order.api</apiPackage>
                             <modelPackage>com.order.model</modelPackage>
                             <strictSpec>true</strictSpec>
@@ -143,7 +169,6 @@
                             <additionalProperties>
                                 <publicMethods>true</publicMethods>
                             </additionalProperties>
-                            <!-- Fix output directory structure -->
                         </configuration>
                     </execution>
                     <execution>
@@ -212,7 +237,6 @@
                             <additionalProperties>
                                 <publicMethods>true</publicMethods>
                             </additionalProperties>
-                            <!-- Fix output directory structure -->
                         </configuration>
                     </execution>
                     <execution>
@@ -251,26 +275,87 @@
                         </configuration>
                     </execution>
 
+<!--                    <execution>-->
+<!--                        <id>generate-product-client</id>-->
+<!--                        <goals>-->
+<!--                            <goal>generate</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <skipValidateSpec>true</skipValidateSpec>-->
+<!--                            <generatorName>spring</generatorName>-->
+<!--                            <generateModels>false</generateModels>-->
+<!--                            <inputSpec>../product-service/product-management-spec/src/main/resources/apis/product-client-api-v1-spec.yaml</inputSpec>-->
+<!--                            <output>${project.build.directory}/generated-sources/openapi</output>-->
+<!--                            <configOptions>-->
+<!--                                <controllerThrowsExceptions>java.io.IOException,com.example.NotFoundException</controllerThrowsExceptions>-->
+<!--                                <skipDefaultInterface>true</skipDefaultInterface>-->
+<!--                                <useBeanValidation>true</useBeanValidation>-->
+<!--                                <useTags>true</useTags>-->
+<!--                                <java8>false</java8>-->
+<!--                                <hideGenerationTimestamp>true</hideGenerationTimestamp>-->
+<!--                                <dateLibrary>java8</dateLibrary>-->
+<!--                                <bigDecimalAsString>true</bigDecimalAsString>-->
+<!--                                <interfaceOnly>true</interfaceOnly>-->
+<!--                                <generateInterfaces>true</generateInterfaces>-->
+<!--                                <useSpringBoot3>true</useSpringBoot3>-->
+<!--                                <apiPackage>com.product.apis</apiPackage>-->
+<!--                                <modelPackage>com.product.models</modelPackage>-->
+<!--                                <library>spring-boot</library>-->
+<!--                                <language>java</language>-->
+<!--                                <skipTests>true</skipTests>-->
+<!--                                <skipValidation>true</skipValidation>-->
+<!--                                <skipExample>true</skipExample>-->
+<!--                                <skipExampleValidation>true</skipExampleValidation>-->
+<!--                                <skipSupportingFiles>true</skipSupportingFiles>-->
+<!--                            </configOptions>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>generate-product-models</id>-->
+<!--                        <goals>-->
+<!--                            <goal>generate</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <generatorName>java</generatorName>-->
+<!--                            <generateApis>false</generateApis>-->
+<!--                            <generateModels>true</generateModels>-->
+<!--                            <inputSpec>../product-service/product-management-spec/src/main/resources/apis/product-client-api-v1-spec.yaml</inputSpec>-->
+<!--                            <output>${project.build.directory}/generated-sources/openapi</output>-->
+<!--                            <configOptions>-->
+<!--                                <library>native</library>-->
+<!--                                <serializationLibrary>jackson</serializationLibrary>-->
+<!--                                <dateLibrary>java8</dateLibrary>-->
+<!--                                <openApiNullable>false</openApiNullable>-->
+<!--                                <useJakartaEe>true</useJakartaEe>-->
+<!--                                <apiPackage>com.product.apis</apiPackage>-->
+<!--                                <modelPackage>com.product.models</modelPackage>-->
+<!--                                <skipTests>true</skipTests>-->
+<!--                                <skipValidation>true</skipValidation>-->
+<!--                                <skipExample>true</skipExample>-->
+<!--                                <skipExampleValidation>true</skipExampleValidation>-->
+<!--                                <skipSupportingFiles>true</skipSupportingFiles>-->
+<!--                            </configOptions>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+
                     <execution>
-                        <id>generate-product-client</id>
+                        <id>generate-product-api-client</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
-
-
                         <configuration>
-                            <skipValidateSpec>true</skipValidateSpec>
-                            <generatorName>spring</generatorName>
-                            <generateModels>false</generateModels>
-                            <skipValidateSpec>true</skipValidateSpec>
                             <inputSpec>../product-service/product-management-spec/src/main/resources/apis/product-client-api-v1-spec.yaml</inputSpec>
-                            <output>${project.build.directory}/generated-sources/openapi</output>
+                            <generatorName>java</generatorName>
+                            <library>resttemplate</library>
+                            <apiPackage>com.product.apis</apiPackage>
+                            <modelPackage>com.product.models</modelPackage>
                             <configOptions>
                                 <controllerThrowsExceptions>java.io.IOException,com.example.NotFoundException</controllerThrowsExceptions>
                                 <skipDefaultInterface>true</skipDefaultInterface>
                                 <useBeanValidation>true</useBeanValidation>
                                 <useTags>true</useTags>
                                 <java8>false</java8>
+                                <useJakartaEe>true</useJakartaEe>
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
                                 <dateLibrary>java8</dateLibrary>
                                 <bigDecimalAsString>true</bigDecimalAsString>
@@ -279,41 +364,40 @@
                                 <useSpringBoot3>true</useSpringBoot3>
                                 <apiPackage>com.product.apis</apiPackage>
                                 <modelPackage>com.product.models</modelPackage>
-                                <library>spring-boot</library>
+                                <library>resttemplate</library>
                                 <language>java</language>
                                 <skipTests>true</skipTests>
                                 <skipValidation>true</skipValidation>
                                 <skipExample>true</skipExample>
                                 <skipExampleValidation>true</skipExampleValidation>
                                 <skipSupportingFiles>true</skipSupportingFiles>
+                                <outputDirectory>${project.build.directory}/generated-sources/openapi</outputDirectory>
                             </configOptions>
                         </configuration>
                     </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
                     <execution>
-                        <id>generate-product-models</id>
+                        <id>copy-product-spec</id>
                         <goals>
-                            <goal>generate</goal>
+                            <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <generatorName>java</generatorName>
-                            <generateApis>false</generateApis>
-                            <generateModels>true</generateModels>
-                            <inputSpec>../product-service/product-management-spec/src/main/resources/apis/product-client-api-v1-spec.yaml</inputSpec>
-                            <output>${project.build.directory}/generated-sources/openapi</output>
-                            <configOptions>
-                                <library>native</library>
-                                <serializationLibrary>jackson</serializationLibrary>
-                                <dateLibrary>java8</dateLibrary>
-                                <openApiNullable>false</openApiNullable>
-                                <useJakartaEe>true</useJakartaEe>
-                                <apiPackage>com.product.apis</apiPackage>
-                                <modelPackage>com.product.models</modelPackage>
-                                <skipTests>true</skipTests>
-                                <skipValidation>true</skipValidation>
-                                <skipExample>true</skipExample>
-                                <skipExampleValidation>true</skipExampleValidation>
-                                <skipSupportingFiles>true</skipSupportingFiles>
-                            </configOptions>
+                            <outputDirectory>${project.build.directory}/generated-sources/openapi</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>../product-service/product-management-spec/src/main/resources/apis</directory>
+                                    <includes>
+                                        <include>product-client-api-v1-spec.yaml</include>
+                                    </includes>
+                                </resource>
+                            </resources>
                         </configuration>
                     </execution>
                 </executions>

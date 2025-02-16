@@ -5,6 +5,7 @@ import com.order.mapper.OrderMapper;
 import com.order.model.OrderModel;
 import com.order.repository.OrderRepository;
 import com.order.service.OrderService;
+import com.product.apis.ProductsApi;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.List;
 @Slf4j
 public class OrderServiceImpl implements OrderService {
 
-//    private final ProductsApi productsApi;
+    //private final ProductsApi productsApi;
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
 
