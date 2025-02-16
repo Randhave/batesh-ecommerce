@@ -7,7 +7,7 @@ tags:
   - name: Reviews
 
 paths:
-  /products/{productId}/reviews:
+  /client-api/v1/products/{productId}/reviews:
     post:
       operationId: createNewReview
       summary: Create a new Review for a Product
@@ -56,7 +56,7 @@ paths:
       tags:
         - Reviews
 
-  /reviews/{id}:
+  /client-api/v1/reviews/{id}:
     get:
       operationId: getReviewById
       summary: Get Review by ID
