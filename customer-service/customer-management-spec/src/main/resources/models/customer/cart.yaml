@@ -1,0 +1,25 @@
+CartModel:
+  type: object
+  properties:
+    id:
+      type: integer
+      description: Unique identifier for the cart
+    customerId:
+      type: integer
+      description: Foreign key referencing the Customer entity
+    cartDate:
+      type: string
+      format: date-time
+      description: Timestamp for when the cart was created
+    totalAmount:
+      type: number
+      description: Total amount of the cart
+    cartItems:
+      type: array
+      items:
+        $ref: 'cart-items.yaml#/CartItem'
+      description: List of cart items
+  required:
+    - customerId
+    - cartDate
+    - totalAmount

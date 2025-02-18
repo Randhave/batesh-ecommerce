@@ -1,0 +1,65 @@
+CustomerModel:
+  type: object
+  properties:
+    id:
+      type: integer
+      description: Unique identifier for the customer
+    firstName:
+      type: string
+      description: Customer's first name
+    lastName:
+      type: string
+      description: Customer's last name
+    email:
+      type: string
+      description: Customer's email address
+      uniqueItems: true
+    password:
+      type: string
+      description: Customer's password
+    phoneNumber:
+      type: string
+      description: Customer's phone number
+    addressLine1:
+      type: string
+      description: Customer's address line 1
+    addressLine2:
+      type: string
+      description: Customer's address line 2
+    city:
+      type: string
+      description: Customer's city
+    state:
+      type: string
+      description: Customer's state
+    zipCode:
+      type: string
+      description: Customer's zip code
+    createdAt:
+      type: string
+      format: date-time
+      description: Timestamp for when the customer account was created
+    updatedAt:
+      type: string
+      format: date-time
+      description: Timestamp for when the customer account was last updated
+    carts:
+      type: array
+      items:
+        $ref: 'cart.yaml#/CartModel'
+      description: List of customer's carts
+    orders:
+      type: array
+      items:
+        $ref: 'order-item.yaml#/OrderItem'
+      description: List of customer's orders
+  required:
+    - firstName
+    - lastName
+    - email
+    - password
+    - phoneNumber
+    - addressLine1
+    - city
+    - state
+    - zipCode

@@ -1,0 +1,23 @@
+CartItem:
+  type: object
+  properties:
+    id:
+      type: integer
+      description: Unique identifier for the cart item
+    cartId:
+      type: integer
+      description: Foreign key referencing the Cart entity
+    productId:
+      type: integer
+      description: Foreign key referencing the Product entity
+    quantity:
+      type: integer
+      description: Quantity of the product in the cart
+    price:
+      type: number
+      description: Price of the product in the cart
+  required:
+    - cartId
+    - productId
+    - quantity
+    - price

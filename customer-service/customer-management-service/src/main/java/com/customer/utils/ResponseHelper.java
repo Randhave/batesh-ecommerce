@@ -1,9 +1,10 @@
-package com.product.utils;
+package com.customer.utils;
 
-import com.product.mapper.GenericResponseMapper;
-import com.product.mapper.GenericResponseMapperImpl;
-import com.product.models.GenericResponse;
-import com.product.models.GenericResponseMeta;
+
+import com.customer.mapper.GenericResponseMapper;
+import com.customer.mapper.GenericResponseMapperImpl;
+import com.example.employee.model.GenericResponse;
+import com.example.employee.model.GenericResponseMeta;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Sort;

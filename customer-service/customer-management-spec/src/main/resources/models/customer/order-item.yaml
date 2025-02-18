@@ -1,0 +1,23 @@
+OrderItem:
+  type: object
+  properties:
+    id:
+      type: integer
+      description: Unique identifier for the order item
+    orderId:
+      type: integer
+      description: Foreign key referencing the Order entity
+    productId:
+      type: integer
+      description: Foreign key referencing the Product entity
+    quantity:
+      type: integer
+      description: Quantity of the product in the order
+    price:
+      type: number
+      description: Price of the product in the order
+  required:
+    - orderId
+    - productId
+    - quantity
+    - price
