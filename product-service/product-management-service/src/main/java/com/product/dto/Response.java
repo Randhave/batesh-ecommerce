@@ -8,5 +8,5 @@ import lombok.Data;
 public class Response<T> {
     private String message;
     private String status;
-    private Object T;
+    private T data;
 }

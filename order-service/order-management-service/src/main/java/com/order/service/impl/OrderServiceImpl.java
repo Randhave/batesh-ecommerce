@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderModel> getAllOrders() {
-        var allProducts = productsApi.getAllProducts();
+        var allProducts = productsApi.getAllProducts(0,10,null,null);
         var allOrders = orderRepository.findAll();
         return allOrders.stream().map(orderMapper::mapEntityToModel).toList();
     }

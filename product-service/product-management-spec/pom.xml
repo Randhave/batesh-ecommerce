@@ -159,6 +159,42 @@
                             </additionalProperties>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>3.generate-category-client-api</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/apis/category-client-api-v1-spec.yaml</inputSpec>
+                            <output>${project.build.directory}/generated-sources/openapi</output>
+                            <generatorName>spring</generatorName>
+                            <!-- depends upon this package names automatically generates models and apis packages -->
+                            <apiPackage>com.product.apis</apiPackage>
+                            <modelPackage>com.product.models</modelPackage>
+                            <strictSpec>true</strictSpec>
+                            <configOptions>
+                                <controllerThrowsExceptions>java.io.IOException,com.product.NotFoundException
+                                </controllerThrowsExceptions>
+                                <skipDefaultInterface>true</skipDefaultInterface>
+                                <useBeanValidation>true</useBeanValidation>
+                                <useClassLevelBeanValidation>false</useClassLevelBeanValidation>
+                                <useTags>true</useTags>
+                                <java8>true</java8>
+                                <useOptional>false</useOptional>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <dateLibrary>java8</dateLibrary>
+                                <bigDecimalAsString>true</bigDecimalAsString>
+                                <useBeanValidation>true</useBeanValidation>
+                                <interfaceOnly>true</interfaceOnly>
+                                <generateInterfaces>true</generateInterfaces>
+                                <useSpringBoot3>true</useSpringBoot3>
+                            </configOptions>
+                            <additionalProperties>
+                                <publicMethods>true</publicMethods>
+                            </additionalProperties>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

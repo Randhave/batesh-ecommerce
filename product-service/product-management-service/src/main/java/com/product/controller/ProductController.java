@@ -1,16 +1,18 @@
 package com.product.controller;
 
 import com.product.apis.ProductsApi;
+import com.product.mapper.GenericResponseMapper;
+import com.product.models.GenericResponse;
 import com.product.models.ProductModel;
 import com.product.service.ProductService;
+import com.product.utils.ResponseHelper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import static com.product.utils.Constants.*;
 
 @RestController
 @Slf4j
@@ -18,13 +20,14 @@ import java.util.List;
 public class ProductController implements ProductsApi {
 
     private final ProductService productService;
+    private final GenericResponseMapper genericResponseMapper;
 
     @Override
-    public ResponseEntity<ProductModel> createNewProduct(ProductModel productModel) {
+    public ResponseEntity<GenericResponse> createNewProduct(ProductModel productModel) {
         log.info("Creating new product with id: {}, name: {}, description: {}", productModel.getProductId(), productModel.getName(), productModel.getDescription());
         var product = productService.createProduct(productModel);
         log.info("Product created successfully with id: {}", product.getProductId());
-        return new ResponseEntity<>(product, HttpStatus.CREATED);
+        return ResponseHelper.returnGenericResponse(product, PRODUCT_CREATED_SUCCESSFULLY, HttpStatus.OK);
     }
 
     @Override
@@ -36,15 +39,15 @@ public class ProductController implements ProductsApi {
     }
 
     @Override
-    public ResponseEntity<List<ProductModel>> getAllProducts() {
+    public ResponseEntity<GenericResponse> getAllProducts(Integer page, Integer size, String sortBy, String sortDirection) {
         log.info("Fetching all products");
-        var products = productService.getAllProducts();
-        log.info("Fetched {} products", products.size());
-        return new ResponseEntity<>(products, HttpStatus.OK);
+        var products = productService.getAllProducts(page, size, sortBy, sortDirection);
+        log.info("Fetched {} products", products);
+        return ResponseHelper.returnGenericResponse(products, PRODUCT_FETCHED_SUCCESSFULLY, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<ProductModel> getProductById(Long id) {
+    public ResponseEntity<GenericResponse> getProductById(Long id) {
         log.info("Fetching product with id: {}", id);
         var product = productService.getProductById(id);
         if (product != null) {
@@ -52,14 +55,14 @@ public class ProductController implements ProductsApi {
         } else {
             log.info("Product not found with id: {}", id);
         }
-        return new ResponseEntity<>(product, HttpStatus.OK);
+        return ResponseHelper.returnGenericResponse(product, PRODUCT_FETCHED_SUCCESSFULLY, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<ProductModel> updateProduct(Long id, ProductModel productModel) {
+    public ResponseEntity<GenericResponse> updateProduct(Long id, ProductModel productModel) {
         log.info("Updating product with id: {}, name: {}, description: {}", id, productModel.getName(), productModel.getDescription());
-        ProductModel updatedProduct = productService.updateProduct(id, productModel);
+        var updatedProduct = productService.updateProduct(id, productModel);
         log.info("Product updated successfully with id: {}", id);
-        return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+        return ResponseHelper.returnGenericResponse(updatedProduct, PRODUCT_UPDATED_SUCCESSFULLY, HttpStatus.OK);
     }
 }

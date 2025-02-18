@@ -1,15 +1,15 @@
 package com.product.service;
 
+import com.product.models.GenericResponse;
 import com.product.models.ProductModel;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface ProductService {
     ProductModel createProduct(ProductModel product);
 
     ProductModel getProductById(Long id);
 
-    List<ProductModel> getAllProducts();
+    Page<ProductModel> getAllProducts(Integer page, Integer size, String sortBy, String sortDirection);
 
     ProductModel updateProduct(Long id, ProductModel product);
 

@@ -122,4 +122,4 @@ paths:
 components:
   schemas:
     ReviewModel:
-      $ref: "../models/review/review.yaml#/components/schemas/ReviewModel"
+      $ref: "../models/review/review.yaml#/ReviewModel"

@@ -3,10 +3,10 @@ package com.product.mapper;
 import com.product.entity.Review;
 import com.product.models.ReviewModel;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ReviewMapper {
 
     ReviewModel mapToReviewModel(Review review);

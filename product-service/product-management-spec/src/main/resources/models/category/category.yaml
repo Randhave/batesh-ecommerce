@@ -1,0 +1,12 @@
+CategoryModel:
+  type: object
+  x-args-constructor: "@lombok.AllArgsConstructor"
+  properties:
+    categoryId:
+      type: integer
+    name:
+      type: string
+    description:
+      type: string
+  required:
+    - name

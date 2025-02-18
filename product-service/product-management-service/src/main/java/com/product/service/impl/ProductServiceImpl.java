@@ -1,16 +1,19 @@
 package com.product.service.impl;
 
 import com.product.handler.BadRequestException;
-import com.product.models.ProductModel;
-import com.product.entity.Product;
+import com.product.mapper.GenericResponseMapper;
 import com.product.mapper.ProductMapper;
+import com.product.models.ProductModel;
 import com.product.repository.ProductRepository;
 import com.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import static com.product.utils.ResponseHelper.getSort;
+import static com.product.utils.ResponseHelper.mapToPageResponse;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +22,7 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
+    private final GenericResponseMapper genericResponseMapper;
 
     @Override
     public ProductModel createProduct(ProductModel product) {
@@ -32,21 +36,20 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductModel getProductById(Long id) {
         log.info("Getting product by ID: {}", id);
-        var product = productRepository.findById(id).orElseThrow(() -> new BadRequestException(String.format("Product not found with ID: " + id)));
+        var product = productRepository.findById(id).orElseThrow(() -> new BadRequestException(String.format("Product not found with ID: %d", id)));
         var productModel = productMapper.mapProductEntityToProductModel(product);
         log.info("Product found with ID: {}", id);
         return productModel;
     }
 
     @Override
-    public List<ProductModel> getAllProducts() {
+    public Page<ProductModel> getAllProducts(Integer page, Integer size, String sortBy, String sortDirection) {
         log.info("Getting all products");
-        var products = productRepository.findAll();
-        var productModels = products.stream().map(productMapper::mapProductEntityToProductModel).toList();
-        log.info("Found {} products", products.size());
-        return productModels;
+        var pageable = PageRequest.of(page, size, getSort(sortBy, sortDirection));
+        var products = productRepository.findAll(pageable);
+        log.info("Found {} products", products.getContent().size());
+        return mapToPageResponse(products, productMapper::mapProductEntityToProductModel);
     }
-
     @Override
     public ProductModel updateProduct(Long id, ProductModel productModel) {
         log.info("Updating product with ID: {}", id);

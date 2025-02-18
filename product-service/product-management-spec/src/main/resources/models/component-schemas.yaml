@@ -1,0 +1,11 @@
+openapi: 3.0.0
+info:
+  title: Component Schemas
+  version: 1.0.0
+
+components:
+  schemas:
+    Any:
+      oneOf:
+        - $ref: '../models/product/product.yaml#/components/schemas/ProductModel'
+        - $ref: '../models/review/review.yaml#/components/schemas/ReviewModel'

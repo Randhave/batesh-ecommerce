@@ -1,25 +1,25 @@
 openapi: 3.0.3
 info:
-  title: Product API
+  title: Category API
   version: 1.0.0
 
 tags:
-  - name: Products
+  - name: Categories
 
 paths:
-  /client-api/v1/products:
+  /client-api/v1/categories:
     post:
-      operationId: createNewProduct
-      summary: Create a new Product
+      operationId: createNewCategory
+      summary: Create a new Category
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductModel'
+              $ref: '#/components/schemas/CategoryModel'
       responses:
         '200':
-          description: Product created successfully
+          description: Category created successfully
           content:
             application/json:
               schema:
@@ -43,11 +43,11 @@ paths:
                 code: 500
                 message: An unexpected error occurred
       tags:
-        - Products
+        - Categories
 
     get:
-      operationId: getAllProducts
-      summary: Get all Products
+      operationId: getAllCategories
+      summary: Get all Categories
       parameters:
         - name: page
           in: query
@@ -75,7 +75,7 @@ paths:
             default: "ASC"
       responses:
         '200':
-          description: List of all Products
+          description: List of all Categories
           content:
             application/json:
               schema:
@@ -99,12 +99,12 @@ paths:
                 code: 500
                 message: An unexpected error occurred
       tags:
-        - Products
+        - Categories
 
-  /client-api/v1/products/{id}:
+  /client-api/v1/categories/{id}:
     get:
-      operationId: getProductById
-      summary: Get Product by ID
+      operationId: getCategoryById
+      summary: Get Category by ID
       parameters:
         - name: id
           in: path
@@ -114,7 +114,7 @@ paths:
             format: int64
       responses:
         '200':
-          description: Product found
+          description: Category found
           content:
             application/json:
               schema:
@@ -138,11 +138,11 @@ paths:
                 code: 500
                 message: An unexpected error occurred
       tags:
-        - Products
+        - Categories
 
     put:
-      operationId: updateProduct
-      summary: Update an Product by ID
+      operationId: updateCategory
+      summary: Update an Category by ID
       parameters:
         - name: id
           in: path
@@ -155,10 +155,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductModel'
+              $ref: '#/components/schemas/CategoryModel'
       responses:
         '200':
-          description: Product updated successfully
+          description: Category updated successfully
           content:
             application/json:
               schema:
@@ -182,11 +182,11 @@ paths:
                 code: 500
                 message: An unexpected error occurred
       tags:
-        - Products
+        - Categories
 
     delete:
-      operationId: deleteProductById
-      summary: Delete an Product by ID
+      operationId: deleteCategoryById
+      summary: Delete an Category by ID
       parameters:
         - name: id
           in: path
@@ -196,7 +196,11 @@ paths:
             format: int64
       responses:
         '200':
-          description: Product deleted successfully
+          description: Category deleted successfully
+          content:
+            application/json:
+              schema:
+                type: string
         '400':
           description: Bad Request
           content:
@@ -216,7 +220,7 @@ paths:
                 code: 500
                 message: An unexpected error occurred
       tags:
-        - Products
+        - Categories
 
 components:
   schemas:
@@ -224,5 +228,5 @@ components:
       $ref: "../models/generic-response.yaml#/GenericResponse"
     ErrorModel:
       $ref: "../models/error.yaml#/Error"
-    ProductModel:
-      $ref: "../models/product/product.yaml#/ProductModel"
+    CategoryModel:
+      $ref: "../models/category/category.yaml#/CategoryModel"

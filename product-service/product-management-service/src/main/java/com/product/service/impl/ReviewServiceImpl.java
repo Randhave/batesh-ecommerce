@@ -50,7 +50,7 @@ public class ReviewServiceImpl implements ReviewService {
     public ReviewModel updateReview(ReviewModel reviewModel) {
         var ratingId = reviewModel.getRatingId();
         var existingReview = reviewRepository.findById(ratingId).orElseThrow(() ->
-                new NotFoundException(String.format("Review not found for ratingId : {}", ratingId)));
+                new NotFoundException(String.format("Review not found for ratingId : %d ", ratingId)));
         reviewMapper.mapToModelToEntity(existingReview, reviewModel);
         var updatedReview = reviewRepository.save(existingReview);
         log.debug("review updated successfully for ratingId : {}", ratingId);
