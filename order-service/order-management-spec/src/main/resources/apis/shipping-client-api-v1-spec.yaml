@@ -7,7 +7,7 @@ tags:
   - name: Shippings
 
 paths:
-  /shipping:
+  /client-api/v1/shipping:
     post:
       summary: Create a new shipping
       description: Create a new shipping

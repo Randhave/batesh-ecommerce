@@ -1,8 +1,9 @@
 package com.customer.mapper;
 
 import com.customer.entity.Customer;
-import com.example.employee.model.CustomerModel;
+import com.customer.model.CustomerModel;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface CustomerMapper {
     Customer mapToEntity(CustomerModel customerModel);
 
     List<CustomerModel> mapToCustomerModelList(List<Customer> customersList);
+
+    void mapToModelToEntity(CustomerModel customerModel, @MappingTarget Customer customer);
 }

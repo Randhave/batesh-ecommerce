@@ -1,6 +1,6 @@
 package com.product.service;
 
-import com.product.models.ReviewModel;
+import com.product.model.ReviewModel;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.product.mapper;
 
 import com.product.entity.Category;
-import com.product.models.CategoryModel;
+import com.product.model.CategoryModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;

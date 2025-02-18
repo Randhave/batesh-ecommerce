@@ -3,7 +3,7 @@ package com.product.service.impl;
 import com.product.handler.BadRequestException;
 import com.product.handler.NotFoundException;
 import com.product.mapper.ReviewMapper;
-import com.product.models.ReviewModel;
+import com.product.model.ReviewModel;
 import com.product.repository.ReviewRepository;
 import com.product.service.ReviewService;
 import lombok.RequiredArgsConstructor;

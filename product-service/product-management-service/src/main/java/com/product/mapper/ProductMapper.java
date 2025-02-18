@@ -1,7 +1,7 @@
 package com.product.mapper;
 
 import com.product.entity.Product;
-import com.product.models.ProductModel;
+import com.product.model.ProductModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;

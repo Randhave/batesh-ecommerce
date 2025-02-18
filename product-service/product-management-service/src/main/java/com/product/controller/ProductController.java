@@ -1,9 +1,9 @@
 package com.product.controller;
 
-import com.product.apis.ProductsApi;
+import com.product.api.ProductsApi;
 import com.product.mapper.GenericResponseMapper;
-import com.product.models.GenericResponse;
-import com.product.models.ProductModel;
+import com.product.model.GenericResponse;
+import com.product.model.ProductModel;
 import com.product.service.ProductService;
 import com.product.utils.ResponseHelper;
 import lombok.RequiredArgsConstructor;

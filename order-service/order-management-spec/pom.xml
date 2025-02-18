@@ -273,8 +273,8 @@
                             <inputSpec>../product-service/product-management-spec/src/main/resources/apis/product-client-api-v1-spec.yaml</inputSpec>
                             <generatorName>java</generatorName>
                             <library>resttemplate</library>
-                            <apiPackage>com.product.apis</apiPackage>
-                            <modelPackage>com.product.models</modelPackage>
+                            <apiPackage>com.product.api</apiPackage>
+                            <modelPackage>com.product.model</modelPackage>
                             <configOptions>
                                 <controllerThrowsExceptions>java.io.IOException,com.example.NotFoundException</controllerThrowsExceptions>
                                 <skipDefaultInterface>true</skipDefaultInterface>
@@ -288,8 +288,6 @@
                                 <interfaceOnly>true</interfaceOnly>
                                 <generateInterfaces>true</generateInterfaces>
                                 <useSpringBoot3>true</useSpringBoot3>
-                                <apiPackage>com.product.apis</apiPackage>
-                                <modelPackage>com.product.models</modelPackage>
                                 <library>resttemplate</library>
                                 <language>java</language>
                                 <skipTests>true</skipTests>

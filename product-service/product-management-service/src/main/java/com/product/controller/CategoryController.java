@@ -1,9 +1,9 @@
 package com.product.controller;
 
-import com.product.apis.CategoriesApi;
+import com.product.api.CategoriesApi;
 import com.product.mapper.GenericResponseMapper;
-import com.product.models.CategoryModel;
-import com.product.models.GenericResponse;
+import com.product.model.CategoryModel;
+import com.product.model.GenericResponse;
 import com.product.service.CategoryService;
 import com.product.utils.ResponseHelper;
 import lombok.RequiredArgsConstructor;

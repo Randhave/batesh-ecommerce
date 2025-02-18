@@ -3,7 +3,7 @@ package com.product.service.impl;
 import com.product.handler.BadRequestException;
 import com.product.mapper.GenericResponseMapper;
 import com.product.mapper.ProductMapper;
-import com.product.models.ProductModel;
+import com.product.model.ProductModel;
 import com.product.repository.ProductRepository;
 import com.product.service.ProductService;
 import lombok.RequiredArgsConstructor;

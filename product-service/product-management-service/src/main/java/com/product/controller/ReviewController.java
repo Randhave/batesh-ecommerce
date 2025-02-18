@@ -1,7 +1,7 @@
 package com.product.controller;
 
-import com.product.apis.ReviewsApi;
-import com.product.models.ReviewModel;
+import com.product.api.ReviewsApi;
+import com.product.model.ReviewModel;
 import com.product.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

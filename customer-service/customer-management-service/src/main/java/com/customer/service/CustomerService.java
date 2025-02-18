@@ -1,6 +1,6 @@
 package com.customer.service;
 
-import com.example.employee.model.CustomerModel;
+import com.customer.model.CustomerModel;
 import org.springframework.data.domain.Page;
 
 public interface CustomerService {
@@ -9,7 +9,7 @@ public interface CustomerService {
 
     CustomerModel getCustomerDetails(Long customerId);
 
-    void deleteCustomer(Long customerId);
+    void deleteCustomerById(Long customerId);
 
     Page<CustomerModel> getAllCustomers(Integer page, Integer size, String sortBy, String sortDirection);
 

@@ -1,7 +1,7 @@
 package com.product.mapper;
 
 import com.product.entity.Review;
-import com.product.models.ReviewModel;
+import com.product.model.ReviewModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;

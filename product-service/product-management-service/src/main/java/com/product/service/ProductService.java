@@ -1,7 +1,6 @@
 package com.product.service;
 
-import com.product.models.GenericResponse;
-import com.product.models.ProductModel;
+import com.product.model.ProductModel;
 import org.springframework.data.domain.Page;
 
 public interface ProductService {

@@ -1,7 +1,7 @@
 package com.product.mapper;
 
-import com.product.models.GenericResponse;
-import com.product.models.GenericResponseMeta;
+import com.product.model.GenericResponse;
+import com.product.model.GenericResponseMeta;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

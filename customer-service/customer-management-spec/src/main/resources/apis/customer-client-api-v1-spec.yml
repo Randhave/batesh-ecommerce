@@ -1,16 +1,16 @@
 openapi: 3.0.3
 info:
-  title: Employee API
+  title: Customer API
   version: 1.0.0
 
 tags:
   - name: Customers
 
 paths:
-  /client-api/v1/employees:
+  /client-api/v1/customer:
     post:
-      operationId: createNewEmployee
-      summary: Create a new employee
+      operationId: createNewCustomer
+      summary: Create a new Customer
       requestBody:
         required: true
         content:
@@ -19,11 +19,11 @@ paths:
               $ref: '#/components/schemas/CustomerModel'
       responses:
         '200':
-          description: Employee created successfully
+          description: Customer created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerModel'
+                $ref: '#/components/schemas/GenericResponse'
         '400':
           description: Bad Request
           content:
@@ -44,10 +44,9 @@ paths:
                 message: An unexpected error occurred
       tags:
         - Customers
-
     get:
-      operationId: getAllEmployees
-      summary: Get all employees
+      operationId: getAllCustomers
+      summary: Get all customer
       parameters:
         - name: page
           in: query
@@ -75,52 +74,11 @@ paths:
             default: "ASC"
       responses:
         '200':
-          description: List of all employees
+          description: List of all customer
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/CustomerModel'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorModel'
-              example:
-                code: 400
-                message: Invalid request data
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorModel'
-              example:
-                code: 500
-                message: An unexpected error occurred
-      tags:
-        - Customers
-
-  /client-api/v1/employees/{id}:
-    get:
-      operationId: getEmployeeById
-      summary: Get employee by ID
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: Employee found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomerModel'
+                $ref: '#/components/schemas/GenericResponse'
         '400':
           description: Bad Request
           content:
@@ -143,15 +101,8 @@ paths:
         - Customers
 
     put:
-      operationId: updateEmployee
-      summary: Update an employee by ID
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+      operationId: updateCustomer
+      summary: Update an Customer by ID
       requestBody:
         required: true
         content:
@@ -160,11 +111,11 @@ paths:
               $ref: '#/components/schemas/CustomerModel'
       responses:
         '200':
-          description: Employee updated successfully
+          description: Customer updated successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerModel'
+                $ref: '#/components/schemas/GenericResponse'
         '400':
           description: Bad Request
           content:
@@ -186,9 +137,47 @@ paths:
       tags:
         - Customers
 
+  /client-api/v1/customer/{id}:
+    get:
+      operationId: getCustomerById
+      summary: Get Customer by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Customer found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 400
+                message: Invalid request data
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+              example:
+                code: 500
+                message: An unexpected error occurred
+      tags:
+        - Customers
     delete:
-      operationId: deleteEmployeeById
-      summary: Delete an employee by ID
+      operationId: deleteCustomerById
+      summary: Delete an Customer by ID
       parameters:
         - name: id
           in: path

@@ -7,7 +7,7 @@ tags:
   - name: Payments
 
 paths:
-  /payments:
+  /client-api/v1/payments:
     post:
       summary: Create a new payment
       description: Create a new payment
@@ -46,7 +46,6 @@ paths:
                   $ref: '#/components/schemas/PaymentModel'
         '404':
           description: No payments found
-
     put:
       summary: Update a payment
       description: Update a payment

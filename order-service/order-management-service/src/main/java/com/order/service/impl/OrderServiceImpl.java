@@ -5,7 +5,7 @@ import com.order.mapper.OrderMapper;
 import com.order.model.OrderModel;
 import com.order.repository.OrderRepository;
 import com.order.service.OrderService;
-import com.product.apis.ProductsApi;
+import com.product.api.ProductsApi;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,6 @@ public class OrderServiceImpl implements OrderService {
     private final ProductsApi productsApi;
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
-
 
     @Override
     public OrderModel createNewOrder(OrderModel orderModel) {

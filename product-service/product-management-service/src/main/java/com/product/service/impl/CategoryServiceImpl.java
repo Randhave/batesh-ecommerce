@@ -2,7 +2,7 @@ package com.product.service.impl;
 
 import com.product.handler.NotFoundException;
 import com.product.mapper.CategoryMapper;
-import com.product.models.CategoryModel;
+import com.product.model.CategoryModel;
 import com.product.repository.CategoryRepository;
 import com.product.service.CategoryService;
 import lombok.RequiredArgsConstructor;

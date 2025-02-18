@@ -1,6 +1,6 @@
 package com.product.service;
 
-import com.product.models.CategoryModel;
+import com.product.model.CategoryModel;
 import org.springframework.data.domain.Page;
 
 
