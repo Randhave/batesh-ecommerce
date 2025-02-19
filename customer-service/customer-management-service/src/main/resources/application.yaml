@@ -27,9 +27,9 @@ spring:
       path: /h2-console
 
   liquibase:
-    change-log: classpath:db/changelog/0.master.xml # main liquibase file
-    enabled: false # Enable Liquibase
-    default-schema: PUBLIC # Specify the default schema for H2
+    change-log: classpath:db/changelog/00-master.yaml
+    enabled: true
+    default-schema: PUBLIC
     contexts:
       - dev
       - prod

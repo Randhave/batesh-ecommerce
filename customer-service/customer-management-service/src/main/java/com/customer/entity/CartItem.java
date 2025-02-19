@@ -13,46 +13,29 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "cart_item")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Customer {
+public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "cart_id")
+    private Integer cartId;
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "product_id")
+    private Integer productId;
 
-    @Column(unique = true)
-    private String email;
+    @Column(name = "quantity")
+    private Integer quantity;
 
-    private String password;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Column(name = "address_line1")
-    private String addressLine1;
-
-    @Column(name = "address_line2")
-    private String addressLine2;
-
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "state")
-    private String state;
-
-    @Column(name = "zip_code")
-    private String zipCode;
+    @Column(name = "price")
+    private Double price;
 
     @CreatedBy
     @Column(name = "created_by", nullable = false)
