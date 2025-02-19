@@ -1,23 +1,24 @@
 package com.customer.config;
 
-import com.order.api.OrdersApi;
 import com.order.ApiClient;
+import com.order.api.OrdersApi;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OrderApiConfig {
 
-//    @Value("${services.base-path.order-service}")
-//    private String basePath;
+    @Value("${services.base-path.order-service}")
+    private String orderServiceUrl;
 
     @Bean
     public ApiClient apiClient() {
-        return new ApiClient().setBasePath("http://localhost:8082/order-service");
+        return new ApiClient().setBasePath(orderServiceUrl);
     }
+
     @Bean
-    public OrdersApi ordersApi(){
-        return new OrdersApi(apiClient());
+    public OrdersApi ordersApi() { return new OrdersApi(apiClient());
     }
 
 }
