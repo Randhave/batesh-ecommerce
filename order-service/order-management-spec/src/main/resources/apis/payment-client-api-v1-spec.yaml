@@ -97,5 +97,9 @@ paths:
 
 components:
   schemas:
+    GenericResponse:
+      $ref: "../models/generic-response.yaml#/GenericResponse"
+    ErrorModel:
+      $ref: "../models/error.yaml#/Error"
     PaymentModel:
       $ref: "../models/order/Payment.yaml#/components/schemas/PaymentModel"

@@ -29,10 +29,10 @@ public class CustomerController implements CustomersApi {
     }
 
     @Override
-    public ResponseEntity<String> deleteCustomerById(Long id) {
+    public ResponseEntity<GenericResponse> deleteCustomerById(Long id) {
         log.info("deleting customer for customerId : {} ", id);
         customerService.deleteCustomerById(id);
-        return new ResponseEntity<>(CUSTOMER_DELETED_SUCCESSFULLY, HttpStatus.OK);
+        return returnGenericResponse(CUSTOMER_DELETED_SUCCESSFULLY, CUSTOMER_CREATED_SUCCESSFULLY, HttpStatus.OK);
     }
 
     @Override

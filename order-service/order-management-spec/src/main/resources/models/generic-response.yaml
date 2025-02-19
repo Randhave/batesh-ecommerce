@@ -1,0 +1,58 @@
+GenericResponse:
+  type: object
+  x-args-constructor: "@lombok.AllArgsConstructor"
+  properties:
+    message:
+      type: string
+      description: The message associated with the response
+    status:
+      type: string
+      description: The status of the response (e.g. 200, 400, 500)
+    data:
+      type: object
+      description: The data associated with the response
+    meta:
+      type: object
+      x-args-constructor: "@lombok.AllArgsConstructor"
+      properties:
+        page:
+          type: integer
+          description: The current page number
+        size:
+          type: integer
+          description: The number of items per page
+        totalPages:
+          type: integer
+          description: The total number of pages
+        totalItems:
+          type: integer
+          format: int64
+          description: The total number of items
+        sorted:
+          type: boolean
+          description: Represents sorting is applied or not
+        sortBy:
+          type: string
+          description: The field used for sorting
+        sortDirection:
+          type: string
+          enum:
+            - asc
+            - desc
+          description: The sorting order (ascending or descending)
+      errors:
+        type: array
+        items:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The error code
+            message:
+              type: string
+              description: The error message
+        description: The errors associated with the response
+      required:
+        - message
+        - status
+        - data

@@ -187,11 +187,11 @@ paths:
             format: int64
       responses:
         '200':
-          description: Category deleted successfully
+          description: customer deleted successfully
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/GenericResponse'
         '400':
           description: Bad Request
           content:

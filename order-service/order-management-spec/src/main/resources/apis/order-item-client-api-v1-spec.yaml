@@ -7,7 +7,7 @@ tags:
   - name: OrderItems
 
 paths:
-  /order-items:
+  /client-api/v1/order-items:
     post:
       summary: Create a new order item
       description: Create a new order item
@@ -286,5 +286,9 @@ paths:
 
 components:
   schemas:
+    GenericResponse:
+      $ref: "../models/generic-response.yaml#/GenericResponse"
+    ErrorModel:
+      $ref: "../models/error.yaml#/Error"
     OrderItemModel:
       $ref: "../models/order/OrderItem.yaml#/components/schemas/OrderItemModel"

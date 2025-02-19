@@ -96,5 +96,9 @@ paths:
           description: Shipping not found
 components:
   schemas:
+    GenericResponse:
+      $ref: "../models/generic-response.yaml#/GenericResponse"
+    ErrorModel:
+      $ref: "../models/error.yaml#/Error"
     ShippingModel:
       $ref: "../models/order/Shipping.yaml#/components/schemas/ShippingModel"

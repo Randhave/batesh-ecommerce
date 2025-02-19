@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/client-api/v1")
 @Slf4j
 public class OrderItemController implements OrderItemsApi {
 

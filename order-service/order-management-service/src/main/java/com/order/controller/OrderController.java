@@ -1,19 +1,18 @@
 package com.order.controller;
 
 import com.order.api.OrdersApi;
+import com.order.model.GenericResponse;
 import com.order.model.OrderModel;
 import com.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import static com.order.utils.ResponseHelper.returnGenericResponse;
 
 @RestController
-@RequestMapping("/client-api/v1")
 @Slf4j
 @RequiredArgsConstructor
 public class OrderController implements OrdersApi {
@@ -21,41 +20,39 @@ public class OrderController implements OrdersApi {
     private final OrderService orderService;
 
     @Override
-    public ResponseEntity<OrderModel> createNewOrder(OrderModel orderModel) {
+    public ResponseEntity<GenericResponse> createNewOrder(OrderModel orderModel) {
         log.info("Creating new order with id: {}", orderModel.getOrderId());
         var orders = orderService.createNewOrder(orderModel);
         log.info("Order details: {}", orderModel);
-        return new ResponseEntity<>(orders, HttpStatus.CREATED);
+        return returnGenericResponse(orders, "New order placed successfully", HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<Void> deleteOrderById(Long id) {
+    public ResponseEntity<GenericResponse> deleteOrderById(Long id) {
         log.info("Deleting order with id: {}", id);
         orderService.deleteOrderByOrderId(id);
-        return null;
+        return returnGenericResponse(Boolean.TRUE, "Order deleted successfully", HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<List<OrderModel>> getAllOrders() {
+    public ResponseEntity<GenericResponse> getAllOrders(Integer page, Integer size, String sortBy, String sortDirection) {
         log.info("Retrieving all orders");
-        var allOrders = orderService.getAllOrders();
+        var allOrders = orderService.getAllOrders(page, size, sortBy, sortDirection);
         // Add order retrieval logic here
-        return new ResponseEntity<>(allOrders, HttpStatus.OK);
+        return returnGenericResponse(allOrders,"Orders fetched successfully", HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<OrderModel> getOrderById(Long id) {
+    public ResponseEntity<GenericResponse> getOrderById(Long id) {
         log.info("Retrieving order with id: {}", id);
-        var order = orderService.getOrderByOrderId(id);
-        // Add order retrieval logic here
-        return new ResponseEntity<>(order, HttpStatus.OK);
+        return returnGenericResponse(orderService.getOrderByOrderId(id),"Order details fetched successfully", HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<OrderModel> updateOrder(Long id, OrderModel orderModel) {
+    public ResponseEntity<GenericResponse> updateOrder(Long id, OrderModel orderModel) {
         log.info("Updating order with id: {}", id);
         var updateOrderDetails = orderService.updateOrderDetails(id, orderModel);
         log.info("Updated order details: {}", orderModel);
-        return new ResponseEntity<>(updateOrderDetails, HttpStatus.OK);
+        return returnGenericResponse(updateOrderDetails,"Orders details updated successfully", HttpStatus.OK);
     }
 }

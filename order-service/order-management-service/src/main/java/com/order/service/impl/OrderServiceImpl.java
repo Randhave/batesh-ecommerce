@@ -8,9 +8,14 @@ import com.order.service.OrderService;
 import com.product.api.ProductsApi;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.order.utils.ResponseHelper.getSort;
+import static com.order.utils.ResponseHelper.mapToPageResponse;
 
 @Service
 @RequiredArgsConstructor
@@ -29,10 +34,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderModel> getAllOrders() {
-        var allProducts = productsApi.getAllProducts(0,10,null,null);
-        var allOrders = orderRepository.findAll();
-        return allOrders.stream().map(orderMapper::mapEntityToModel).toList();
+    public Page<OrderModel> getAllOrders(Integer page, Integer size, String sortBy, String sortDirection) {
+        //var allProducts = productsApi.getAllProducts(0,10,null,null);
+        var pageable = PageRequest.of(page, size, getSort(sortBy, sortDirection));
+        var allOrders = orderRepository.findAll(pageable);
+        return mapToPageResponse(allOrders, orderMapper::mapEntityToModel);
     }
 
     @Override
